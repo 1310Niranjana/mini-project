@@ -21,7 +21,7 @@ add_videos("YouTube-real", 1, "youtube-real")
 add_videos("Celeb-synthesis", 0, "celeb-synthesis")
 
 # SAVE CSV
-output_file = "video_list.csv"
+output_file = "metadata/video_list.csv"
 
 with open(output_file, "w", newline="") as f:
     writer = csv.writer(f)
