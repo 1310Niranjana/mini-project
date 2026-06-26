@@ -1,0 +1,7 @@
+venv311/
+compressed_videos/
+frames/
+faces/
+failed_faces/
+__pycache__/
+*.pyc
