@@ -1,0 +1,11 @@
+video_path,label,source,split
+YouTube-real/00000.mp4,1,youtube-real,train
+Celeb-real/id4_0001.mp4,1,celeb-real,train
+Celeb-real/id10_0007.mp4,1,celeb-real,train
+YouTube-real/00079.mp4,1,youtube-real,train
+Celeb-real/id11_0004.mp4,1,celeb-real,train
+Celeb-synthesis/id4_id0_0001.mp4,0,celeb-synthesis,train
+Celeb-synthesis/id4_id2_0008.mp4,0,celeb-synthesis,train
+Celeb-synthesis/id2_id6_0006.mp4,0,celeb-synthesis,train
+Celeb-synthesis/id9_id17_0003.mp4,0,celeb-synthesis,train
+Celeb-synthesis/id2_id4_0002.mp4,0,celeb-synthesis,train
