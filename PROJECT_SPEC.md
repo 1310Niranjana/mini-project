@@ -3,44 +3,80 @@ Deepfake Detection with Compression Robustness Using Dual-Stream EfficientNet-B0
 Motivated by: Lagsoun et al. 2025, IEEE Access (research question, not architecture — see Methodology below)
 
 Status: PREPROCESSING COMPLETE — MODEL TRAINING IN PROGRESS (RQ3 pending)
+
 Team Responsibilities
+
 Person 1: Data collection and preprocessing ✅ DONE
+
 Person 2: Model development and FFT pipeline — baseline (original-only) trained ✅; compression-aware retraining (RQ3) 🔲 in progress
+
 Person 3: Evaluation and Streamlit deployment — 🔲 pending Person 2's compression-aware weights
+
 Dataset
+
 Primary: Celeb-DF v2
+
 Real videos: 408
+
 Fake videos: 795
+
 Total videos: 1203
+
 Random seed: 42
+
 Split type: Video-level (no leakage)
+
 Split	Videos
+
 Train	841
+
 Validation	180
+
 Test	182
+
 Compression Settings
+
 Level	Resolution	CRF	Codec
+
 original	native	-	-
+
 crf23	1280x720	23	libx264
+
 crf28	854x480	28	libx264
+
 crf35	640x360	35	libx264
 
 Pixel format: yuv420p
 
+
 Face Detection
+
 Tool: MTCNN (facenet-pytorch)
+
 Output size: 224x224
+
 Total faces: 90,042
+
 Failed detections: 43
+
 Model Architecture
+
 Dual-stream EfficientNet-B0
+
 Stream 1: RGB frames
+
 Stream 2: FFT (frequency domain)
+
 Fusion: torch.cat() → 2560-D
+
 Classifier: Dropout(0.3) → Linear(2560,1) → raw logit
+
 Loss (training): BCEWithLogitsLoss (sigmoid applied internally by loss function, not in model forward())
+
 Inference: sigmoid applied manually inside get_frame_probability(), then mean-aggregated across frames, 0.5 threshold
+
 Methodology — Architecture Justification
+
 Relationship to Prior Work
 
 This project is motivated by Lagsoun et al. (2025, IEEE Access), which investigates deepfake detection robustness under compression. Our implemented architecture is not a direct implementation of their method. Lagsoun et al. use a Db2 wavelet transform, ConvLSTM, Conv3D, and a custom ResNet backbone. Our team independently designed a dual-stream EfficientNet-B0 architecture (RGB stream + FFT-based frequency stream) as an alternative approach to the same underlying research question: does compression-aware training improve deepfake detection robustness against real-world platform re-encoding (e.g., WhatsApp, Instagram)?
@@ -67,36 +103,65 @@ FFT Pipeline (Person 2)
 All steps must be identical across training, validation, testing, and Streamlit inference:
 
 Convert to grayscale
+
 Apply fft2
+
 Apply fftshift
+
 Take absolute value
+
 Apply log1p
+
 Min-max normalize
+
 Replicate to 3 channels
+
 Apply ImageNet normalization
+
 Interface Contract (Person 2 → Person 3)
+
 
 Person 2 must expose:
 
 Function: get_frame_probability(image)
+
 Returns: single float probability (0-1)
+
+
 Person 3 never accesses model internals
+
 Research Question 3 — Compression-Aware Training (OPEN)
+
 Status: In progress (Person 2)
+
 Baseline result (locked): Original-only training, epoch 7, 95.58% val accuracy on clean test set
+
 Needed for paper (2x2 eval matrix):
+
 Training data	Clean test acc	Compressed test acc
+
 Original only (baseline)	95.58% ✅	pending 🔲
+
 Original + CRF23/28/35 (compression-aware)	pending 🔲	pending 🔲
+
 Why this matters: demonstrates whether compression-aware training closes a generalization gap that plain training doesn't — this is the paper's core contribution, not the raw baseline accuracy number.
+
 Blocked on: Person 2 retraining on mixed-compression data + evaluating both checkpoints (baseline and compression-aware) on both clean and compressed test sets.
+
 Key Decisions (LOCKED)
+
 split_manifest.csv is the single source of truth
+
 Video-level split must happen before any processing
+
 Original variant must be retained alongside compressed variants
+
 Failed face detections go to failed_faces/ not discarded
+
 MTCNN imported from facenet_pytorch (not mtcnn package)
+
 Model outputs raw logits (not sigmoid) during training; sigmoid applied only at inference
+
 Architecture is team's own synthesis, citing SpectraNet as closest precedent — not a direct implementation of Lagsoun et al. (see Methodology section)
 Processed Dataset
 
