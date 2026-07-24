@@ -33,7 +33,7 @@ class DualStreamModel(nn.Module):
         return self.classifier(self.dropout(fused))
 
 
-def get_frame_probability(image, model_path='model_baseline_epoch7.pth'):
+def get_frame_probability(image, model_path='model_compression_aware_epoch1.pth'):
     """
     Takes a face image (numpy array, RGB format) and returns
     probability of being REAL as a float between 0 and 1.
