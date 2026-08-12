@@ -1,0 +1,41 @@
+{
+  "crf35_misclassified_total": 20,
+  "compression_caused": {
+    "count": 8,
+    "videos": [
+      "id4_0000",
+      "id3_0003",
+      "id2_0002",
+      "id13_0008",
+      "id0_0009",
+      "00132",
+      "id17_0005",
+      "id1_0000"
+    ],
+    "note": "Correctly classified (>0.5) at original quality, flipped wrong specifically at CRF35"
+  },
+  "inherently_hard": {
+    "count": 8,
+    "videos": [
+      "id6_0006",
+      "id10_0008",
+      "id17_0002",
+      "id4_0006",
+      "id7_0004",
+      "id16_0006",
+      "id16_0002",
+      "id0_0007"
+    ],
+    "note": "Already misclassified (<0.5) even at original quality, independent of compression"
+  },
+  "fake_misclassified_as_real": {
+    "count": 4,
+    "videos": [
+      "id11_id7_0007",
+      "id3_id6_0007",
+      "id11_id7_0008",
+      "id13_id10_0014"
+    ],
+    "note": "All confidently wrong (0.52-0.95), all Celeb-synthesis face-swap videos"
+  }
+}
