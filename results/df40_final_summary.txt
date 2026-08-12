@@ -1,0 +1,802 @@
+DF40 Cross-Dataset Generalization — Family-Level Results (31 methods, ALL 5 families complete)
+GAN (5): StyleGANXL, VQGAN, StyleGAN2, StyleGAN3, sd2.1
+Diffusion (5): DiT, SiT, RDDM, ddim, pixart
+FS (9, complete): fsgan, simswap, inswap, blendface, uniface, mobileswap, faceswap, e4s, facedancer
+FR (8): fomm, lia, mcnet, hyperreenact, one_shot_free, MRAA, pirender, danet
+FE (5, complete): e4e, stargan, starganv2, styleclip, CollabDiff
+40 real + 40 fake samples per method per compression level. 1240 fake + 160 real samples total per level.
+
+CAVEAT: RDDM (Diffusion) showed an unusually high fake-detection rate at
+original quality in earlier smaller-sample testing, likely due to a 1px
+crop fix needed for its odd 259x259 native dimensions. With 5 Diffusion
+methods now included, this effect is diluted but check per-method detail
+if reporting original-quality Diffusion numbers specifically.
+
+Family classification source: DF40 paper (arXiv:2406.13495), Appendix
+"Details of Implemented Forgery Methods."
+Note: "ddim" not explicitly confirmed against paper's numbered method table
+(closest match is DDPM, #29) - treated as Diffusion based on naming/
+architecture convention.
+
+{
+  "original": {
+    "GAN": {
+      "mean_accuracy": 0.495,
+      "mean_auc": 0.5914375,
+      "mean_fake_detection_rate": 0.04,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5875,
+      "mean_auc": 0.637875,
+      "mean_fake_detection_rate": 0.225,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5513888888888888,
+      "mean_auc": 0.7528819444444443,
+      "mean_fake_detection_rate": 0.1527777777777778,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.6046875,
+      "mean_auc": 0.8048437500000001,
+      "mean_fake_detection_rate": 0.259375,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5025,
+      "mean_auc": 0.577625,
+      "mean_fake_detection_rate": 0.05500000000000001,
+      "n_methods": 5
+    }
+  },
+  "crf23": {
+    "GAN": {
+      "mean_accuracy": 0.5225,
+      "mean_auc": 0.6619375,
+      "mean_fake_detection_rate": 0.06999999999999999,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5925,
+      "mean_auc": 0.68175,
+      "mean_fake_detection_rate": 0.20999999999999996,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5583333333333332,
+      "mean_auc": 0.7769791666666667,
+      "mean_fake_detection_rate": 0.14166666666666666,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.625,
+      "mean_auc": 0.8297656250000001,
+      "mean_fake_detection_rate": 0.275,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5175000000000001,
+      "mean_auc": 0.6528125,
+      "mean_fake_detection_rate": 0.06000000000000001,
+      "n_methods": 5
+    }
+  },
+  "crf28": {
+    "GAN": {
+      "mean_accuracy": 0.55,
+      "mean_auc": 0.63175,
+      "mean_fake_detection_rate": 0.125,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5349999999999999,
+      "mean_auc": 0.6156875000000002,
+      "mean_fake_detection_rate": 0.095,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5666666666666668,
+      "mean_auc": 0.7292708333333333,
+      "mean_fake_detection_rate": 0.15833333333333333,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.63125,
+      "mean_auc": 0.801328125,
+      "mean_fake_detection_rate": 0.2875,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5225,
+      "mean_auc": 0.584625,
+      "mean_fake_detection_rate": 0.06999999999999999,
+      "n_methods": 5
+    }
+  },
+  "crf35": {
+    "GAN": {
+      "mean_accuracy": 0.54,
+      "mean_auc": 0.641,
+      "mean_fake_detection_rate": 0.22999999999999998,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5075000000000001,
+      "mean_auc": 0.6036875,
+      "mean_fake_detection_rate": 0.165,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5402777777777777,
+      "mean_auc": 0.7044791666666668,
+      "mean_fake_detection_rate": 0.2305555555555555,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.603125,
+      "mean_auc": 0.7802734375,
+      "mean_fake_detection_rate": 0.35625,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.45,
+      "mean_auc": 0.526,
+      "mean_fake_detection_rate": 0.05,
+      "n_methods": 5
+    }
+  }
+}
+
+Per-method detail:
+{
+  "original": {
+    "StyleGANXL": {
+      "accuracy": 0.4875,
+      "auc": 0.5456249999999999,
+      "fake_detection_rate": 0.025
+    },
+    "VQGAN": {
+      "accuracy": 0.5,
+      "auc": 0.593125,
+      "fake_detection_rate": 0.05
+    },
+    "StyleGAN2": {
+      "accuracy": 0.4875,
+      "auc": 0.6640625,
+      "fake_detection_rate": 0.025
+    },
+    "StyleGAN3": {
+      "accuracy": 0.475,
+      "auc": 0.554375,
+      "fake_detection_rate": 0.0
+    },
+    "sd2.1": {
+      "accuracy": 0.525,
+      "auc": 0.6000000000000001,
+      "fake_detection_rate": 0.1
+    },
+    "DiT": {
+      "accuracy": 0.5375,
+      "auc": 0.7337499999999999,
+      "fake_detection_rate": 0.125
+    },
+    "SiT": {
+      "accuracy": 0.5375,
+      "auc": 0.6431250000000001,
+      "fake_detection_rate": 0.125
+    },
+    "RDDM": {
+      "accuracy": 0.9,
+      "auc": 0.9425,
+      "fake_detection_rate": 0.85
+    },
+    "ddim": {
+      "accuracy": 0.4875,
+      "auc": 0.315,
+      "fake_detection_rate": 0.025
+    },
+    "pixart": {
+      "accuracy": 0.475,
+      "auc": 0.5549999999999999,
+      "fake_detection_rate": 0.0
+    },
+    "fsgan": {
+      "accuracy": 0.625,
+      "auc": 0.8168749999999999,
+      "fake_detection_rate": 0.3
+    },
+    "simswap": {
+      "accuracy": 0.475,
+      "auc": 0.726875,
+      "fake_detection_rate": 0.0
+    },
+    "inswap": {
+      "accuracy": 0.575,
+      "auc": 0.7540625000000001,
+      "fake_detection_rate": 0.2
+    },
+    "blendface": {
+      "accuracy": 0.575,
+      "auc": 0.8093750000000001,
+      "fake_detection_rate": 0.2
+    },
+    "uniface": {
+      "accuracy": 0.5,
+      "auc": 0.7234375,
+      "fake_detection_rate": 0.05
+    },
+    "mobileswap": {
+      "accuracy": 0.625,
+      "auc": 0.8515624999999999,
+      "fake_detection_rate": 0.3
+    },
+    "faceswap": {
+      "accuracy": 0.5,
+      "auc": 0.6412499999999999,
+      "fake_detection_rate": 0.05
+    },
+    "e4s": {
+      "accuracy": 0.475,
+      "auc": 0.62625,
+      "fake_detection_rate": 0.0
+    },
+    "facedancer": {
+      "accuracy": 0.6125,
+      "auc": 0.82625,
+      "fake_detection_rate": 0.275
+    },
+    "fomm": {
+      "accuracy": 0.6125,
+      "auc": 0.7271875,
+      "fake_detection_rate": 0.275
+    },
+    "lia": {
+      "accuracy": 0.5875,
+      "auc": 0.8443750000000001,
+      "fake_detection_rate": 0.225
+    },
+    "mcnet": {
+      "accuracy": 0.6,
+      "auc": 0.834375,
+      "fake_detection_rate": 0.25
+    },
+    "hyperreenact": {
+      "accuracy": 0.525,
+      "auc": 0.7212500000000001,
+      "fake_detection_rate": 0.1
+    },
+    "one_shot_free": {
+      "accuracy": 0.6125,
+      "auc": 0.8096874999999999,
+      "fake_detection_rate": 0.275
+    },
+    "MRAA": {
+      "accuracy": 0.7,
+      "auc": 0.86875,
+      "fake_detection_rate": 0.45
+    },
+    "pirender": {
+      "accuracy": 0.625,
+      "auc": 0.785625,
+      "fake_detection_rate": 0.3
+    },
+    "danet": {
+      "accuracy": 0.575,
+      "auc": 0.8475,
+      "fake_detection_rate": 0.2
+    },
+    "e4e": {
+      "accuracy": 0.5375,
+      "auc": 0.6528125,
+      "fake_detection_rate": 0.125
+    },
+    "stargan": {
+      "accuracy": 0.475,
+      "auc": 0.5371874999999999,
+      "fake_detection_rate": 0.0
+    },
+    "starganv2": {
+      "accuracy": 0.475,
+      "auc": 0.3921875,
+      "fake_detection_rate": 0.0
+    },
+    "styleclip": {
+      "accuracy": 0.55,
+      "auc": 0.6625,
+      "fake_detection_rate": 0.15
+    },
+    "CollabDiff": {
+      "accuracy": 0.475,
+      "auc": 0.6434375,
+      "fake_detection_rate": 0.0
+    }
+  },
+  "crf23": {
+    "StyleGANXL": {
+      "accuracy": 0.5125,
+      "auc": 0.6193750000000001,
+      "fake_detection_rate": 0.05
+    },
+    "VQGAN": {
+      "accuracy": 0.55,
+      "auc": 0.5915625,
+      "fake_detection_rate": 0.125
+    },
+    "StyleGAN2": {
+      "accuracy": 0.5,
+      "auc": 0.72,
+      "fake_detection_rate": 0.025
+    },
+    "StyleGAN3": {
+      "accuracy": 0.5375,
+      "auc": 0.696875,
+      "fake_detection_rate": 0.1
+    },
+    "sd2.1": {
+      "accuracy": 0.5125,
+      "auc": 0.6818749999999999,
+      "fake_detection_rate": 0.05
+    },
+    "DiT": {
+      "accuracy": 0.5375,
+      "auc": 0.7321874999999999,
+      "fake_detection_rate": 0.1
+    },
+    "SiT": {
+      "accuracy": 0.575,
+      "auc": 0.7053125,
+      "fake_detection_rate": 0.175
+    },
+    "RDDM": {
+      "accuracy": 0.8625,
+      "auc": 0.954375,
+      "fake_detection_rate": 0.75
+    },
+    "ddim": {
+      "accuracy": 0.4875,
+      "auc": 0.35906250000000006,
+      "fake_detection_rate": 0.0
+    },
+    "pixart": {
+      "accuracy": 0.5,
+      "auc": 0.6578125,
+      "fake_detection_rate": 0.025
+    },
+    "fsgan": {
+      "accuracy": 0.625,
+      "auc": 0.823125,
+      "fake_detection_rate": 0.275
+    },
+    "simswap": {
+      "accuracy": 0.5,
+      "auc": 0.748125,
+      "fake_detection_rate": 0.025
+    },
+    "inswap": {
+      "accuracy": 0.525,
+      "auc": 0.7475,
+      "fake_detection_rate": 0.075
+    },
+    "blendface": {
+      "accuracy": 0.5875,
+      "auc": 0.861875,
+      "fake_detection_rate": 0.2
+    },
+    "uniface": {
+      "accuracy": 0.5625,
+      "auc": 0.7728125,
+      "fake_detection_rate": 0.15
+    },
+    "mobileswap": {
+      "accuracy": 0.6625,
+      "auc": 0.90875,
+      "fake_detection_rate": 0.35
+    },
+    "faceswap": {
+      "accuracy": 0.5125,
+      "auc": 0.69,
+      "fake_detection_rate": 0.05
+    },
+    "e4s": {
+      "accuracy": 0.5,
+      "auc": 0.6056250000000001,
+      "fake_detection_rate": 0.025
+    },
+    "facedancer": {
+      "accuracy": 0.55,
+      "auc": 0.835,
+      "fake_detection_rate": 0.125
+    },
+    "fomm": {
+      "accuracy": 0.625,
+      "auc": 0.7653125,
+      "fake_detection_rate": 0.275
+    },
+    "lia": {
+      "accuracy": 0.575,
+      "auc": 0.87375,
+      "fake_detection_rate": 0.175
+    },
+    "mcnet": {
+      "accuracy": 0.6125,
+      "auc": 0.8690625,
+      "fake_detection_rate": 0.25
+    },
+    "hyperreenact": {
+      "accuracy": 0.5875,
+      "auc": 0.7546875,
+      "fake_detection_rate": 0.2
+    },
+    "one_shot_free": {
+      "accuracy": 0.625,
+      "auc": 0.8190625,
+      "fake_detection_rate": 0.275
+    },
+    "MRAA": {
+      "accuracy": 0.7,
+      "auc": 0.87875,
+      "fake_detection_rate": 0.425
+    },
+    "pirender": {
+      "accuracy": 0.65,
+      "auc": 0.805,
+      "fake_detection_rate": 0.325
+    },
+    "danet": {
+      "accuracy": 0.625,
+      "auc": 0.8725,
+      "fake_detection_rate": 0.275
+    },
+    "e4e": {
+      "accuracy": 0.55,
+      "auc": 0.6875,
+      "fake_detection_rate": 0.125
+    },
+    "stargan": {
+      "accuracy": 0.4875,
+      "auc": 0.629375,
+      "fake_detection_rate": 0.0
+    },
+    "starganv2": {
+      "accuracy": 0.4875,
+      "auc": 0.56,
+      "fake_detection_rate": 0.0
+    },
+    "styleclip": {
+      "accuracy": 0.5625,
+      "auc": 0.7021875000000001,
+      "fake_detection_rate": 0.15
+    },
+    "CollabDiff": {
+      "accuracy": 0.5,
+      "auc": 0.6849999999999999,
+      "fake_detection_rate": 0.025
+    }
+  },
+  "crf28": {
+    "StyleGANXL": {
+      "accuracy": 0.5625,
+      "auc": 0.615,
+      "fake_detection_rate": 0.15
+    },
+    "VQGAN": {
+      "accuracy": 0.55,
+      "auc": 0.5471874999999999,
+      "fake_detection_rate": 0.125
+    },
+    "StyleGAN2": {
+      "accuracy": 0.5375,
+      "auc": 0.6796874999999999,
+      "fake_detection_rate": 0.1
+    },
+    "StyleGAN3": {
+      "accuracy": 0.5375,
+      "auc": 0.6534375,
+      "fake_detection_rate": 0.1
+    },
+    "sd2.1": {
+      "accuracy": 0.5625,
+      "auc": 0.6634375,
+      "fake_detection_rate": 0.15
+    },
+    "DiT": {
+      "accuracy": 0.5625,
+      "auc": 0.7465625,
+      "fake_detection_rate": 0.15
+    },
+    "SiT": {
+      "accuracy": 0.5625,
+      "auc": 0.655625,
+      "fake_detection_rate": 0.15
+    },
+    "RDDM": {
+      "accuracy": 0.55,
+      "auc": 0.7528125,
+      "fake_detection_rate": 0.125
+    },
+    "ddim": {
+      "accuracy": 0.5,
+      "auc": 0.30593750000000003,
+      "fake_detection_rate": 0.025
+    },
+    "pixart": {
+      "accuracy": 0.5,
+      "auc": 0.6175,
+      "fake_detection_rate": 0.025
+    },
+    "fsgan": {
+      "accuracy": 0.6125,
+      "auc": 0.7743749999999999,
+      "fake_detection_rate": 0.25
+    },
+    "simswap": {
+      "accuracy": 0.4875,
+      "auc": 0.6703124999999999,
+      "fake_detection_rate": 0.0
+    },
+    "inswap": {
+      "accuracy": 0.5375,
+      "auc": 0.688125,
+      "fake_detection_rate": 0.1
+    },
+    "blendface": {
+      "accuracy": 0.6125,
+      "auc": 0.8037500000000001,
+      "fake_detection_rate": 0.25
+    },
+    "uniface": {
+      "accuracy": 0.55,
+      "auc": 0.723125,
+      "fake_detection_rate": 0.125
+    },
+    "mobileswap": {
+      "accuracy": 0.6625,
+      "auc": 0.889375,
+      "fake_detection_rate": 0.35
+    },
+    "faceswap": {
+      "accuracy": 0.55,
+      "auc": 0.6515624999999999,
+      "fake_detection_rate": 0.125
+    },
+    "e4s": {
+      "accuracy": 0.5,
+      "auc": 0.5490625,
+      "fake_detection_rate": 0.025
+    },
+    "facedancer": {
+      "accuracy": 0.5875,
+      "auc": 0.81375,
+      "fake_detection_rate": 0.2
+    },
+    "fomm": {
+      "accuracy": 0.6125,
+      "auc": 0.725625,
+      "fake_detection_rate": 0.25
+    },
+    "lia": {
+      "accuracy": 0.6125,
+      "auc": 0.8256249999999999,
+      "fake_detection_rate": 0.25
+    },
+    "mcnet": {
+      "accuracy": 0.65,
+      "auc": 0.791875,
+      "fake_detection_rate": 0.325
+    },
+    "hyperreenact": {
+      "accuracy": 0.6,
+      "auc": 0.75875,
+      "fake_detection_rate": 0.225
+    },
+    "one_shot_free": {
+      "accuracy": 0.7125,
+      "auc": 0.8265625,
+      "fake_detection_rate": 0.45
+    },
+    "MRAA": {
+      "accuracy": 0.6875,
+      "auc": 0.84375,
+      "fake_detection_rate": 0.4
+    },
+    "pirender": {
+      "accuracy": 0.6,
+      "auc": 0.8015625,
+      "fake_detection_rate": 0.225
+    },
+    "danet": {
+      "accuracy": 0.575,
+      "auc": 0.836875,
+      "fake_detection_rate": 0.175
+    },
+    "e4e": {
+      "accuracy": 0.55,
+      "auc": 0.6381249999999999,
+      "fake_detection_rate": 0.125
+    },
+    "stargan": {
+      "accuracy": 0.4875,
+      "auc": 0.5334375,
+      "fake_detection_rate": 0.0
+    },
+    "starganv2": {
+      "accuracy": 0.5,
+      "auc": 0.496875,
+      "fake_detection_rate": 0.025
+    },
+    "styleclip": {
+      "accuracy": 0.575,
+      "auc": 0.6278125,
+      "fake_detection_rate": 0.175
+    },
+    "CollabDiff": {
+      "accuracy": 0.5,
+      "auc": 0.6268750000000001,
+      "fake_detection_rate": 0.025
+    }
+  },
+  "crf35": {
+    "StyleGANXL": {
+      "accuracy": 0.525,
+      "auc": 0.6009375,
+      "fake_detection_rate": 0.2
+    },
+    "VQGAN": {
+      "accuracy": 0.525,
+      "auc": 0.5515625000000001,
+      "fake_detection_rate": 0.2
+    },
+    "StyleGAN2": {
+      "accuracy": 0.575,
+      "auc": 0.715,
+      "fake_detection_rate": 0.3
+    },
+    "StyleGAN3": {
+      "accuracy": 0.5625,
+      "auc": 0.6884375,
+      "fake_detection_rate": 0.275
+    },
+    "sd2.1": {
+      "accuracy": 0.5125,
+      "auc": 0.6490624999999999,
+      "fake_detection_rate": 0.175
+    },
+    "DiT": {
+      "accuracy": 0.5625,
+      "auc": 0.705625,
+      "fake_detection_rate": 0.275
+    },
+    "SiT": {
+      "accuracy": 0.55,
+      "auc": 0.6575000000000001,
+      "fake_detection_rate": 0.25
+    },
+    "RDDM": {
+      "accuracy": 0.55,
+      "auc": 0.7225,
+      "fake_detection_rate": 0.25
+    },
+    "ddim": {
+      "accuracy": 0.425,
+      "auc": 0.3003125,
+      "fake_detection_rate": 0.0
+    },
+    "pixart": {
+      "accuracy": 0.45,
+      "auc": 0.6325,
+      "fake_detection_rate": 0.05
+    },
+    "fsgan": {
+      "accuracy": 0.6,
+      "auc": 0.735625,
+      "fake_detection_rate": 0.35
+    },
+    "simswap": {
+      "accuracy": 0.4625,
+      "auc": 0.6675,
+      "fake_detection_rate": 0.075
+    },
+    "inswap": {
+      "accuracy": 0.5125,
+      "auc": 0.645,
+      "fake_detection_rate": 0.175
+    },
+    "blendface": {
+      "accuracy": 0.575,
+      "auc": 0.7884375,
+      "fake_detection_rate": 0.3
+    },
+    "uniface": {
+      "accuracy": 0.5,
+      "auc": 0.6868749999999999,
+      "fake_detection_rate": 0.15
+    },
+    "mobileswap": {
+      "accuracy": 0.6875,
+      "auc": 0.86875,
+      "fake_detection_rate": 0.525
+    },
+    "faceswap": {
+      "accuracy": 0.5,
+      "auc": 0.6375000000000001,
+      "fake_detection_rate": 0.15
+    },
+    "e4s": {
+      "accuracy": 0.45,
+      "auc": 0.505,
+      "fake_detection_rate": 0.05
+    },
+    "facedancer": {
+      "accuracy": 0.575,
+      "auc": 0.8056249999999999,
+      "fake_detection_rate": 0.3
+    },
+    "fomm": {
+      "accuracy": 0.55,
+      "auc": 0.6884374999999999,
+      "fake_detection_rate": 0.25
+    },
+    "lia": {
+      "accuracy": 0.625,
+      "auc": 0.795625,
+      "fake_detection_rate": 0.4
+    },
+    "mcnet": {
+      "accuracy": 0.5875,
+      "auc": 0.79625,
+      "fake_detection_rate": 0.325
+    },
+    "hyperreenact": {
+      "accuracy": 0.5625,
+      "auc": 0.7375,
+      "fake_detection_rate": 0.275
+    },
+    "one_shot_free": {
+      "accuracy": 0.625,
+      "auc": 0.795625,
+      "fake_detection_rate": 0.4
+    },
+    "MRAA": {
+      "accuracy": 0.65,
+      "auc": 0.80125,
+      "fake_detection_rate": 0.45
+    },
+    "pirender": {
+      "accuracy": 0.65,
+      "auc": 0.82625,
+      "fake_detection_rate": 0.45
+    },
+    "danet": {
+      "accuracy": 0.575,
+      "auc": 0.80125,
+      "fake_detection_rate": 0.3
+    },
+    "e4e": {
+      "accuracy": 0.4875,
+      "auc": 0.5543750000000001,
+      "fake_detection_rate": 0.125
+    },
+    "stargan": {
+      "accuracy": 0.425,
+      "auc": 0.505625,
+      "fake_detection_rate": 0.0
+    },
+    "starganv2": {
+      "accuracy": 0.4375,
+      "auc": 0.4956249999999999,
+      "fake_detection_rate": 0.025
+    },
+    "styleclip": {
+      "accuracy": 0.45,
+      "auc": 0.511875,
+      "fake_detection_rate": 0.05
+    },
+    "CollabDiff": {
+      "accuracy": 0.45,
+      "auc": 0.5625,
+      "fake_detection_rate": 0.05
+    }
+  }
+}
