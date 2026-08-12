@@ -1,0 +1,130 @@
+{
+  "original": {
+    "GAN": {
+      "mean_accuracy": 0.495,
+      "mean_auc": 0.5914375,
+      "mean_fake_detection_rate": 0.04,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5875,
+      "mean_auc": 0.637875,
+      "mean_fake_detection_rate": 0.225,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5513888888888888,
+      "mean_auc": 0.7528819444444443,
+      "mean_fake_detection_rate": 0.1527777777777778,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.6046875,
+      "mean_auc": 0.8048437500000001,
+      "mean_fake_detection_rate": 0.259375,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5025,
+      "mean_auc": 0.577625,
+      "mean_fake_detection_rate": 0.05500000000000001,
+      "n_methods": 5
+    }
+  },
+  "crf23": {
+    "GAN": {
+      "mean_accuracy": 0.5225,
+      "mean_auc": 0.6619375,
+      "mean_fake_detection_rate": 0.06999999999999999,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5925,
+      "mean_auc": 0.68175,
+      "mean_fake_detection_rate": 0.20999999999999996,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5583333333333332,
+      "mean_auc": 0.7769791666666667,
+      "mean_fake_detection_rate": 0.14166666666666666,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.625,
+      "mean_auc": 0.8297656250000001,
+      "mean_fake_detection_rate": 0.275,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5175000000000001,
+      "mean_auc": 0.6528125,
+      "mean_fake_detection_rate": 0.06000000000000001,
+      "n_methods": 5
+    }
+  },
+  "crf28": {
+    "GAN": {
+      "mean_accuracy": 0.55,
+      "mean_auc": 0.63175,
+      "mean_fake_detection_rate": 0.125,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5349999999999999,
+      "mean_auc": 0.6156875000000002,
+      "mean_fake_detection_rate": 0.095,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5666666666666668,
+      "mean_auc": 0.7292708333333333,
+      "mean_fake_detection_rate": 0.15833333333333333,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.63125,
+      "mean_auc": 0.801328125,
+      "mean_fake_detection_rate": 0.2875,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.5225,
+      "mean_auc": 0.584625,
+      "mean_fake_detection_rate": 0.06999999999999999,
+      "n_methods": 5
+    }
+  },
+  "crf35": {
+    "GAN": {
+      "mean_accuracy": 0.54,
+      "mean_auc": 0.641,
+      "mean_fake_detection_rate": 0.22999999999999998,
+      "n_methods": 5
+    },
+    "Diffusion": {
+      "mean_accuracy": 0.5075000000000001,
+      "mean_auc": 0.6036875,
+      "mean_fake_detection_rate": 0.165,
+      "n_methods": 5
+    },
+    "FS": {
+      "mean_accuracy": 0.5402777777777777,
+      "mean_auc": 0.7044791666666668,
+      "mean_fake_detection_rate": 0.2305555555555555,
+      "n_methods": 9
+    },
+    "FR": {
+      "mean_accuracy": 0.603125,
+      "mean_auc": 0.7802734375,
+      "mean_fake_detection_rate": 0.35625,
+      "n_methods": 8
+    },
+    "FE": {
+      "mean_accuracy": 0.45,
+      "mean_auc": 0.526,
+      "mean_fake_detection_rate": 0.05,
+      "n_methods": 5
+    }
+  }
+}
