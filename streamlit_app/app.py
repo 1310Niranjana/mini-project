@@ -22,7 +22,7 @@ import torch.nn as nn
 from facenet_pytorch import MTCNN
 from PIL import Image
 
-st.set_page_config(page_title="Signal Forensics Lab", page_icon="◉", layout="wide")
+st.set_page_config(page_title="DeepFake Detection With Compression Reliance", page_icon="◉", layout="wide")
 
 # ─────────────────────────────────────────────────────────────────────────
 # 1. THEME ENGINE
@@ -302,7 +302,7 @@ tab_detect, tab_eval = st.tabs(["◉ Detect", "▤ Evaluation Results"])
 # ─────────────────────────────────────────────────────────────────────────
 
 with tab_detect:
-    st.markdown("## Signal Forensics Lab")
+   st.markdown("## DeepFake Detection With Compression Reliance")
     st.markdown(
         '<span class="mono">Upload a video. We analyze faces in both the pixel domain '
         'and the frequency domain to flag synthetic content.</span>', unsafe_allow_html=True
